@@ -16,6 +16,8 @@
         <ProgressBar
             android:id="@+id/progress"
             android:layout_width="200dp"
+            android:progress="900000"
+            style="@style/CircularDeterminateProgressBar"
             android:layout_height="200dp"/>
 
         <TextView

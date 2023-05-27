@@ -15,6 +15,7 @@
     <string name="breathing">Breathing</string>
     <string name="error">Error</string>
     <string name="type_again">Type again</string>
+    <string name="training">Training</string>
 
     <string-array name="sex">
         <item>Select Sec</item>

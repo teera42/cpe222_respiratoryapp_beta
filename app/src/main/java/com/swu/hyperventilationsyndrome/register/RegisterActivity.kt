@@ -79,18 +79,18 @@ class RegisterActivity : AppCompatActivity() {
                     when (sharedPreferences.getInt("age", 0)) {
                         //30-40
                         in 0..1 -> {
-                            if (frequency in 30..40) isFrequency = true
+                            if (frequency in 30.0..40.0) isFrequency = true
                         }
                         //20-29
                         in 1..5 -> {
-                            if (frequency in 20..30) isFrequency = true
+                            if (frequency in 20.0..30.0) isFrequency = true
                         }
 
                         in 6..12 -> {
-                            if (frequency in 15..25) isFrequency = true
+                            if (frequency in 15.0..25.0) isFrequency = true
                         }
 
-                        else -> if (math.frequency() in 12..20) isFrequency = true
+                        else ->  isFrequency = true
                     }
 
                     if ((isFrequency && math.amplitude() < 5.0)) {

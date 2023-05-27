@@ -4,9 +4,9 @@ import com.swu.hyperventilationsyndrome.model.DataModel
 
 
 class HyperMath(lis: List<DataModel>?) {
-    private var amplitudePositive: ArrayList<Int> = ArrayList()
-    private var amplitudeNegative: ArrayList<Int> = ArrayList()
-    private var frequency: Int = 0
+    private var amplitudePositive: ArrayList<Double> = ArrayList()
+    private var amplitudeNegative: ArrayList<Double> = ArrayList()
+    private var frequency: Double = 0.0
 
     init {
         if (lis != null) {
@@ -17,8 +17,6 @@ class HyperMath(lis: List<DataModel>?) {
             }
             frequency /= lis.size
         }
-
-
     }
 
     fun amplitude(): Double {
@@ -32,7 +30,7 @@ class HyperMath(lis: List<DataModel>?) {
         return slope
     }
 
-    fun frequency(): Int {
-        return frequency * 60
+    fun frequency(): Double {
+        return frequency * 60f
     }
 }

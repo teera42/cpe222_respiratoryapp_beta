@@ -1,11 +1,16 @@
 package com.swu.hyperventilationsyndrome.profile
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
+import android.widget.Toast
 import com.swu.hyperventilationsyndrome.databinding.ActivityProfileBinding
+import com.swu.hyperventilationsyndrome.training.TrainingActivity
 
 class ProfileActivity : AppCompatActivity() {
     private lateinit var binding: ActivityProfileBinding;
@@ -15,6 +20,10 @@ class ProfileActivity : AppCompatActivity() {
         binding = ActivityProfileBinding.inflate(layoutInflater)
         sharedPreferences = getSharedPreferences("App", MODE_PRIVATE)
         setContentView(binding.root)
+
+        binding.train.setOnClickListener {
+            startActivity(Intent(this, TrainingActivity::class.java))
+        }
     }
 
     @SuppressLint("SetTextI18n")
@@ -22,7 +31,7 @@ class ProfileActivity : AppCompatActivity() {
         super.onResume()
 
         binding.dateProgress.text = "${sharedPreferences.getInt("progress", 0)}/15"
-        binding.username.text = sharedPreferences.getString("name","none")
+        binding.username.text = sharedPreferences.getString("name", "none")
         binding.age.text = sharedPreferences.getInt("age", 0).toString()
         binding.sex.text = sharedPreferences.getString("sex", "non select")
 
@@ -41,9 +50,25 @@ class ProfileActivity : AppCompatActivity() {
                 binding.star2.visibility = View.VISIBLE
                 binding.star3.visibility = View.VISIBLE
             }
+
             else -> {
 
             }
         }
+    }
+
+    private var isExit = false
+
+    @Deprecated("Deprecated in Java")
+    override fun onBackPressed() {
+        if (isExit) {
+            finish()
+        }
+
+        isExit = true
+        Toast.makeText(this, "Press again to exit", Toast.LENGTH_LONG).show()
+        Handler(Looper.myLooper()!!).postDelayed({
+            isExit = false
+        }, 2000)
     }
 }
