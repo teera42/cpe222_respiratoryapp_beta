@@ -3,6 +3,7 @@ package com.swu.hyperventilationsyndrome.training
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.SharedPreferences
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Handler
@@ -16,10 +17,13 @@ import java.text.SimpleDateFormat
 import java.util.Date
 
 class TrainingActivity : AppCompatActivity() {
-    val time = 15 * 60 * 1000L
+    val time = 15 * 60 * 1000L + 1000
     private var isPlay = false
     private lateinit var binding: ActivityTrainingBinding
     private lateinit var sharedPreferences: SharedPreferences
+
+    private var mediaPlayer: MediaPlayer? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -27,7 +31,7 @@ class TrainingActivity : AppCompatActivity() {
         binding.progress.max = time.toInt()
         binding.progress.progress = time.toInt()
         setContentView(binding.root)
-
+        mediaPlayer = MediaPlayer.create(this, R.raw.sound)
         sharedPreferences = getSharedPreferences("App", MODE_PRIVATE)
     }
 
@@ -67,6 +71,7 @@ class TrainingActivity : AppCompatActivity() {
             if (!isPlay) {
                 isPlay = true
                 countDownTimer.start()
+                mediaPlayer?.start()
                 binding.buttonClick.setImageResource(R.drawable.no)
             }
         }
@@ -94,5 +99,11 @@ class TrainingActivity : AppCompatActivity() {
         Handler(Looper.myLooper()!!).postDelayed({
             isPlay = true
         }, 2000)
+    }
+
+    override fun onDestroy() {
+        mediaPlayer?.release()
+        mediaPlayer = null
+        super.onDestroy()
     }
 }

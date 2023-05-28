@@ -1,8 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:src="@drawable/question_back"
-    android:layout_height="200dp"
-    android:contentDescription="@string/app_name">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
-</ImageView>
+    <ImageView
+        android:layout_width="match_parent"
+        android:src="@drawable/question_back"
+        android:layout_height="200dp"
+        android:contentDescription="@string/app_name"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:padding="20sp"
+        android:text="แบบประเมินอาการ"/>
+
+</LinearLayout>

@@ -4,11 +4,10 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.CountDownTimer
 import android.os.Handler
 import android.os.Looper
 import com.swu.hyperventilationsyndrome.databinding.ActivityMainBinding
-import com.swu.hyperventilationsyndrome.question.QuestionActivity
+import com.swu.hyperventilationsyndrome.profile.ProfileActivity
 import com.swu.hyperventilationsyndrome.register.RegisterActivity
 
 class MainActivity : AppCompatActivity() {
@@ -23,8 +22,8 @@ class MainActivity : AppCompatActivity() {
 
         Handler(Looper.myLooper()!!)
             .postDelayed({
-                val mIntent: Intent = if (!sharedPreferences.getBoolean("isRegister", false)) {
-                    Intent(this, QuestionActivity::class.java)
+                val mIntent: Intent = if (sharedPreferences.getBoolean("isRegister", false)) {
+                    Intent(this, ProfileActivity::class.java)
                 } else {
                     Intent(this, RegisterActivity::class.java)
                 }

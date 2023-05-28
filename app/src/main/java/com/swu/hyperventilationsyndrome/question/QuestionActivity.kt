@@ -4,13 +4,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.swu.hyperventilationsyndrome.databinding.ActivityQuestionBinding
 import android.content.Context
-import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
 import com.swu.hyperventilationsyndrome.model.Question
 import com.swu.hyperventilationsyndrome.question.adapter.QuestionRecycleAdapter
-
-
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
@@ -27,21 +24,8 @@ class QuestionActivity : AppCompatActivity() {
         val gson = Gson()
         val questions: Array<Question> = gson.fromJson(jsonString, Array<Question>::class.java)
 
-//        for (question in questions) {
-//            Log.d("testChoice",question.question)
-//            if (question.choice.isNotEmpty()) {
-//                println("Choices:")
-//                for (choice in question.choice) {
-//                    Log.d("testChoice",choice)
-//                }
-//            } else {
-//                Log.d("testChoice","No choices available for this question")
-//            }
-//        }
-
-
         binding.question.layoutManager = LinearLayoutManager(this)
-        binding.question.adapter = QuestionRecycleAdapter(questions)
+        binding.question.adapter = QuestionRecycleAdapter(this,questions)
     }
 
 

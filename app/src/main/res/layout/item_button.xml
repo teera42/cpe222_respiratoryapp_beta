@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.AppCompatButton xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:text="@string/app_name"
+    android:text="Submit"
     android:textAllCaps="false"
-    android:layout_height="wrap_content">
+    android:textColor="@color/white"
+    android:layout_margin="10dp"
+    android:layout_marginBottom="50dp"
+    android:background="@drawable/recycle_butt"
+    android:layout_height="wrap_content"
+    android:id="@+id/cy_button">
 
 </androidx.appcompat.widget.AppCompatButton>

@@ -10,6 +10,7 @@ import android.os.Looper
 import android.view.View
 import android.widget.Toast
 import com.swu.hyperventilationsyndrome.databinding.ActivityProfileBinding
+import com.swu.hyperventilationsyndrome.question.QuestionActivity
 import com.swu.hyperventilationsyndrome.training.TrainingActivity
 
 class ProfileActivity : AppCompatActivity() {
@@ -23,6 +24,10 @@ class ProfileActivity : AppCompatActivity() {
 
         binding.train.setOnClickListener {
             startActivity(Intent(this, TrainingActivity::class.java))
+        }
+
+        binding.demo.setOnClickListener {
+            startActivity(Intent(this,QuestionActivity::class.java))
         }
     }
 
