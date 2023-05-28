@@ -5,3 +5,4 @@ data class DataModel(
     val ap_p: Double,
     val frequency: Double
 )
+
