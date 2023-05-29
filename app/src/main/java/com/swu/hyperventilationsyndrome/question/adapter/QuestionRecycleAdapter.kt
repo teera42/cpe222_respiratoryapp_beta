@@ -1,6 +1,7 @@
 package com.swu.hyperventilationsyndrome.question.adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,8 +19,16 @@ import java.util.Collections
 
 class QuestionRecycleAdapter(private val context: Context, private val data: Array<Question>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    private var mSelection = mutableListOf<Int>()
+
     private var dialog: UtilDialog = UtilDialog(context)
+    private var mSelection = mutableListOf<Int>()
+
+    init {
+        for (x in data.indices) {
+            mSelection.add(0)
+            Log.d("sasa",x.toString())
+        }
+    }
 
     inner class ImageViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
@@ -70,9 +79,6 @@ class QuestionRecycleAdapter(private val context: Context, private val data: Arr
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (position >= mSelection.size - 1) {
-            mSelection.add(0)
-        }
 
         when (holder.itemViewType) {
             1 -> {
@@ -125,8 +131,8 @@ class QuestionRecycleAdapter(private val context: Context, private val data: Arr
                 view.button.setOnClickListener {
 
                     var inputAll: Boolean = false
-                    val count:Int = Collections.frequency(mSelection, 0);
-                    Toast.makeText(context,count.toString(),Toast.LENGTH_LONG).show()
+                    val count: Int = Collections.frequency(mSelection, 0);
+                    Toast.makeText(context, mSelection.size.toString(), Toast.LENGTH_LONG).show()
                     try {
                         if (count > 3) {
                             throw Exception("SelectionIncompleteException")
